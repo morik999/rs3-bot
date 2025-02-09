@@ -1,4 +1,6 @@
-﻿PerformNecromancy() {
+﻿#Include, subfunctions.ahk
+
+PerformNecromancy() {
     Gui, Submit, NoHide
     MinWait := Wait1Min * 1000
     MaxWait := Wait1Max * 1000
@@ -19,7 +21,7 @@
     MouseGetPos, StartX, StartY
     Random, X2, 1720, 1735
     Random, Y2, 460, 500
-    MouseMoveSmooth(StartX, StartY, X2, Y2)
+    MouseMoveSmooth2(StartX, StartY, X2, Y2)
     Sleep, 200
 
     ; 4. Wait 4-5 seconds
@@ -36,7 +38,7 @@
     ; 7. Drag mouse 85-90 pixels south
     Random, DragDist, 82, 87
     NewY := Y2 + DragDist
-    MouseMoveSmooth(X2, Y2, X2, NewY)
+    MouseMoveSmooth2(X2, Y2, X2, NewY)
     Sleep, 200
 
     ; 8. Left mouse click
@@ -49,14 +51,14 @@
     ; 10. Drag to (1705,995) to (1725,1015)
     Random, X3, 1705, 1725
     Random, Y3, 995, 1015
-    MouseMoveSmooth(X2, NewY, X3, Y3)
+    MouseMoveSmooth2(X2, NewY, X3, Y3)
     Sleep, 200
 
     X1 := X3
     Y1 := Y3
 }
 
-MouseMoveSmooth(x1, y1, x2, y2) {
+MouseMoveSmooth2(x1, y1, x2, y2) {
     Steps := 10
     Loop, %Steps% {
         InterX := x1 + ((x2 - x1) * A_Index / Steps)
